@@ -1,0 +1,93 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+
+{% block styles %}
+    <style>
+
+    #wrapper {
+        position: relative;
+        width: 900px;
+        height:650px;
+    }
+
+    #top {
+        position: relative;
+        top: 0;
+        left: 0%;
+        width: 100%;
+        height: 5%;
+        /*background: red;*/
+        padding: 10;
+    }
+
+    #left {
+        position: absolute;;
+        float:left;
+        left: 0%;
+        width: 35%;
+        height: 90%;
+        padding: 2%;
+        /*background: green;*/
+    }
+
+    #right {
+        position: absolute;
+        float:right;
+        left: 38%;
+        width: 60%;
+        height: 90%;
+        padding: 2%;
+        /*background: green;*/
+    }
+
+    #bottom {
+        position: absolute;
+        left: 55%;
+        bottom: 0;
+        width: 100%;
+        height: 5%;
+        /*background: blue;*/
+    }
+
+    li, ul {
+    margin: 0;
+    padding: 0.2em;
+    }
+    </style>
+
+{%endblock%}
+
+{% block title %}
+    Picture {{ view.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+
+<div id="wrapper">
+
+  <div id="top">
+  </div>
+
+  <div id="left">
+      <img src = {%  static cur_photo %} width=300px/>
+  </div>
+
+  <div id="right">
+      <h4><b> On scales from 0 to 7, what do you think? How... </b></h4>
+      {% formfield player.happy %}
+      {% formfield player.angry %}
+      {% formfield player.fearful %}
+      {% formfield player.surprised %}
+      {% formfield player.sad %}
+      {% formfield player.neutral %}
+      <h4><b>...does this person look? </b></h4>
+ </div>
+
+ <div id="bottom">
+     {% next_button %}
+ </div>
+
+</div>
+
+{% endblock %}
